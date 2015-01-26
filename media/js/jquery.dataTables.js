@@ -5013,12 +5013,12 @@
 	 */
 	function _fnLog( settings, level, msg, tn )
 	{
-		msg = 'DataTables warning: '+
-			(settings!==null ? 'table id='+settings.sTableId+' - ' : '')+msg;
 	
 		if ( tn ) {
-			msg += '. For more information about this error, please see '+
-			'http://datatables.net/tn/'+tn;
+			var tn_arr = ['无效的JSON数据','表格只能使用table元素进行初始化','表格已经初始化，请使用API修改相关设置','数据个数不匹配','错误的页码设置','表格header, body和 footer可能未排列正确','服务器请求出错'];
+			msg = '表格错误: ' + tn_arr[tn-1] + '('+tn+')';
+		}else{
+			msg = '表格错误: ' + msg;
 		}
 	
 		if ( ! level  ) {
